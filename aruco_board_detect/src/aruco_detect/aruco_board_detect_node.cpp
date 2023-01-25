@@ -275,12 +275,12 @@ void ArucoDetectNode::boardDetectionTimedCallback(const ros::TimerEvent&)
     {
         // By knowing the number of markers in the board, we can filter out from the estimation the ones whose
         // ID is not within bounds
-        // e.g. a 7x5 board has markers with ids ranging from 1 to 35
+        // e.g. a 7x5 board has markers with ids ranging from 0 to 34
         // Split the markers that belong to the board and the singles
 
         for (int detected_marker_idx = 0; detected_marker_idx < marker_ids.size(); detected_marker_idx++)
         {
-            if (marker_ids[detected_marker_idx] > 0 && marker_ids[detected_marker_idx] < board_description_.n_markers_x_ * board_description_.n_markers_y_)
+            if (marker_ids[detected_marker_idx] >= 0 && marker_ids[detected_marker_idx] < board_description_.n_markers_x_ * board_description_.n_markers_y_)
             {
                 // Marker belongs to board
 
